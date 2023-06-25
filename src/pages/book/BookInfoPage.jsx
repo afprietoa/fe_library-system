@@ -20,6 +20,20 @@ const BookInfoPage = () => {
     fetchBookInfo();
   }, [isbn13]);
 
+  const handleAddToList = async (listId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/list/add/1/${isbn13}/${listId}`);
+      if (response.ok) {
+        console.log('Book added to list successfully');
+        // Perform any additional actions upon successful addition to the list
+      } else {
+        console.error('Error adding book to list:', response.status);
+      }
+    } catch (error) {
+      console.error('Error adding book to list:', error);
+    }
+  };
+
   return (
     <div className="bookInfoPage">
       {bookInfo ? (
@@ -60,6 +74,11 @@ const BookInfoPage = () => {
               <div className="bookDetail">
                 <span className="detailLabel">Item Status:</span> {bookInfo.ItemStatus}
               </div>
+            </div>
+            <div className="buttonsContainer">
+              <button className="listButton" onClick={() => handleAddToList(0)}>Add to Reading List</button>
+              <button className="listButton" onClick={() => handleAddToList(1)}>Add to Read List</button>
+              <button className="listButton" onClick={() => handleAddToList(2)}>Add to Plan to Read List</button>
             </div>
           </div>
         </>
