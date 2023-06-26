@@ -138,7 +138,7 @@ const userSlice = createSlice({
             state.isLoading = true;
         }).addCase(createUser.fulfilled, (state) =>{
             state.isLoading = false;
-            toast.success('Job Created');
+            toast.success('User Created');
         }).addCase(createUser.rejected, (state,{payload}) =>{
             state.isLoading = false;
             toast.error(payload);
@@ -146,12 +146,12 @@ const userSlice = createSlice({
             state.isLoading = true;
         }).addCase(editUser.fulfilled, (state) =>{
             state.isLoading = false;
-            toast.success('Job Modified...');
+            toast.success('User Modified...');
         }).addCase(editUser.rejected, (state,{payload}) =>{
             state.isLoading = false;
             toast.error(payload);
         }).addCase(deleteUser.fulfilled, (state, {payload}) =>{
-            toast.success(payload);
+            toast.success('User Deleted...');
         }).addCase(deleteUser.rejected, (state,{payload}) =>{
             toast.error(payload);
         });;

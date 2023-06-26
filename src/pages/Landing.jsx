@@ -34,23 +34,23 @@ console.log(books);
 
   console.log(books);
 
-     useEffect(() => {
-      setTimeout(() => {
-        dispatch(getBooksByTitle(searchByTitle))    
-  }, 2000);
-     }, [searchByTitle])
+  //    useEffect(() => {
+  //     setTimeout(() => {
+  //       dispatch(getBooksByTitle(searchByTitle))    
+  // }, 2000);
+  //    }, [searchByTitle])
 
-  useEffect(() => {
-      setTimeout(() => {
-        dispatch(getBooksByAuthor(searchByAuthor))    
-  }, 2000);
-     }, [searchByAuthor])
+  // useEffect(() => {
+  //     setTimeout(() => {
+  //       dispatch(getBooksByAuthor(searchByAuthor))    
+  // }, 2000);
+  //    }, [searchByAuthor])
 
 
   useEffect(() => {
     setTimeout(() => {
           dispatch(getAllBooks())    
-    }, 2000);
+    }, 3000);
     
   }, [])
 

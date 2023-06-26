@@ -24,7 +24,7 @@ export const loginUserThunk = async(url, user, thunkAPI)=>{
 
 export const updateUserThunk = async (url, user, thunkAPI) =>{
     try {
-        const resp = await customFetch.patch(url , user);
+        const resp = await customFetch.put(url , user);
     console.log(resp.data);
         user = {...resp.data};
         return {user};
@@ -52,7 +52,7 @@ export const editUserThunk = async (url, user, thunkAPI) =>{
    
     try {
         
-        const resp = await customFetch.patch(url, user);
+        const resp = await customFetch.put(url, user);
         
         thunkAPI.dispatch(clearValues());
         console.log(resp.data);
