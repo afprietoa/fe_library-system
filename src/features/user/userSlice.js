@@ -154,7 +154,7 @@ const userSlice = createSlice({
             toast.success('User Deleted...');
         }).addCase(deleteUser.rejected, (state,{payload}) =>{
             toast.error(payload);
-        });;
+        });
     }
 });
 

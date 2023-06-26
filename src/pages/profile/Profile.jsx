@@ -61,6 +61,7 @@ const Profile = () => {
   }
 
   return (
+    <>
     <div className="profile">
       <div className="images">
         <img
@@ -151,6 +152,7 @@ const Profile = () => {
 
       </div>
     </div>
+    </>
   );
 };
 

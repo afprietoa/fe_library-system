@@ -4,9 +4,10 @@ import Wrapper from "../../assets/wrappers/DashboardFormPage.js";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { updateUser } from "../../features/user/userSlice";
+import { Link } from "react-router-dom";
 
 
-const Profile = () => {
+const ProfileForm = () => {
   const {isLoading, user} = useSelector((store) =>store.user);
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({
@@ -39,7 +40,7 @@ const Profile = () => {
   return (
     <Wrapper>
       <form className="form" onSubmit={onSubmit}>
-        <h3>Profile</h3>
+        <h3>Profile Form</h3>
         <div className="form-center">
 
            <FormRow 
@@ -78,13 +79,22 @@ const Profile = () => {
                 value={userData.password}
                 handleChange={handleChange}
             />
+            
           <button type="submit" className="btn btn-block" disabled={isLoading}>
             {isLoading ? 'Please Wait...' : 'save changes'}
           </button>
+          <Link
+              type="button" 
+              to={`/profile/${user.id}`}
+              className="btn btn-block clear-btn">
+              More
+            </Link>
+
+
         </div>
       </form>
     </Wrapper>
   )
 }
 
-export default Profile
+export default ProfileForm

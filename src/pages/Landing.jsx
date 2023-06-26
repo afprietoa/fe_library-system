@@ -4,7 +4,7 @@ import Wrapper from '../assets/wrappers/LandingPage'
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllBooks, getBooksByAuthor, getBooksByGender, getBooksByTitle } from '../features/allBooks/allBooksSlice';
-import { addBookToLocalStorage } from '../utils/localStorage';
+import { addBookToLocalStorage, removeBookFromLocalStorage} from '../utils/localStorage';
 import { Flex, Spacer } from '@chakra-ui/react';
 import AppNavBar from '../components/AppNavBar';
 import {Link} from 'react-router-dom';
@@ -48,6 +48,7 @@ console.log(books);
 
 
   useEffect(() => {
+    removeBookFromLocalStorage()
     setTimeout(() => {
           dispatch(getAllBooks())    
     }, 3000);

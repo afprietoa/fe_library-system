@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './bookInfoPage.scss';
+import AppNavBar from '../../components/AppNavBar';
 
 const BookInfoPage = () => {
   const { isbn13 } = useParams();
@@ -21,6 +22,8 @@ const BookInfoPage = () => {
   }, [isbn13]);
 
   return (
+    <>
+    <AppNavBar/>
     <div className="bookInfoPage">
       {bookInfo ? (
         <>
@@ -67,6 +70,7 @@ const BookInfoPage = () => {
         <div>Loading...</div>
       )}
     </div>
+    </>
   );
 };
 

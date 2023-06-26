@@ -7,6 +7,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { GiBookmarklet } from "react-icons/gi";
 import {Link} from 'react-router-dom';
+import { Button, Stack } from '@mui/material';
+
+import { useNavigate} from 'react-router-dom';
 
 const lightTheme = createTheme({
   palette: {
@@ -15,7 +18,7 @@ const lightTheme = createTheme({
 })
 
 const AppNavBar = () => {
-
+  const navigate = useNavigate();
 
   return (
     <ThemeProvider theme={lightTheme}>
@@ -75,7 +78,20 @@ const AppNavBar = () => {
             </Typography>
             </Box>
           </Box>
-
+          <Stack direction="row" spacing={2}>
+      <Button 
+      color="success"
+      onClick={() => navigate("/home")}
+      >
+        HOME
+      </Button>
+      <Button 
+      color="success"
+      onClick={() => navigate("/landing")}
+      >
+        BOOKS
+      </Button>
+    </Stack>
           <Box 
                 sx={{
                   p: 0,
@@ -94,6 +110,7 @@ const AppNavBar = () => {
 
                 }}
           >
+           
           <Link to='/register' className=''>Login/Register</Link> 
           </Box>
         </Box>

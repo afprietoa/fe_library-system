@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './searchPage.scss';
+import './homePage.scss';
+import AppNavBar from '../../components/AppNavBar';
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -59,6 +60,8 @@ const HomePage = () => {
   };
 
   return (
+    <>
+      <AppNavBar/>
     <div className="homePage">
       <h1>Book Search</h1>
       <input
@@ -135,6 +138,7 @@ const HomePage = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

@@ -6,7 +6,7 @@ import AllBooks from './AllBooks';
 import AllIssues from './AllIssues';
 import AllUsers from './AllUsers';
 import Stats from './Stats';
-import Profile from './Profile';
+import ProfileForm from './ProfileForm';
 import SharedLayout from './SharedLayout';
 export{
     AddBook,
@@ -16,6 +16,6 @@ export{
     AllIssues,
     AllUsers,
     Stats,
-    Profile,
+    ProfileForm,
     SharedLayout
 }
