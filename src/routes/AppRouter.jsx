@@ -14,11 +14,7 @@ import ProtectedRoute from '../pages/dashboard/ProtectedRoute';
             <BrowserRouter>
               <Routes>
                 <Route path='/' element={
-
-                  <ProtectedRoute>
                     <SharedLayout/>
-                  </ProtectedRoute>
-                  
                   }>
                   <Route index element={<Stats/>}/>
                   <Route path='all-books' element={<AllBooks/>}/>
