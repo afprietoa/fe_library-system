@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import'react-toastify/dist/ReactToastify.css';
 import { Stats, SharedLayout, AllBooks, AllUsers, AllIssues, AddBook, AddIssue,  Profile, AddUser } from '../pages/dashboard';
 import ProtectedRoute from '../pages/dashboard/ProtectedRoute';
+import BookDetail from '../pages/bookDetail/BookDetail';
 
     const AppRouter = () => {
 
@@ -30,6 +31,7 @@ import ProtectedRoute from '../pages/dashboard/ProtectedRoute';
                 </Route>
                 <Route path='landing' element={<Landing/>}/>
                 <Route path='register' element={<Register/>}/>
+                <Route path="book-detail/:isbn13" element={<BookDetail />} />
                 <Route path='*' element={<Error/>}/>
               </Routes>
               <ToastContainer position='top-center'/>

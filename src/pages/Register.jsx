@@ -1,11 +1,13 @@
 
-import { FormRow, FormRowSelect } from '../components';
+import { FormRow, FormRowSelect, Logo } from '../components';
 import {useState, useEffect} from 'react'
 import Wrapper from '../assets/wrappers/RegisterPage'
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, registerUser } from '../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
+import { Image, Center } from '@chakra-ui/react';
+import logo from '../assets/images/logo2.jpg';
 
 const initialState = {
     name:'',
@@ -34,7 +36,7 @@ const Register = () => {
         e.preventDefault();
         const { name, nickname, email, password, role, isMember } = values;
         console.log(values)
-        if(!nickname || !password || (!isMember && !role && !email && !name)){
+        if(!nickname || !password || (!isMember && !email && !name)){
             toast.error('Please Fill Out All Fields');
             return;
         }
@@ -60,7 +62,14 @@ const Register = () => {
   return (
     <Wrapper>
         <form className='form' onSubmit={onSubmit}>
-            <h3 >essence</h3>
+        <Center h='100px'>
+        <Image
+    boxSize='160px'
+    objectFit='cover'
+    src={logo}
+    alt='logo'
+  />
+  </Center>
 
             <h3>{values.isMember ? 'Login': 'Register'}</h3>
 

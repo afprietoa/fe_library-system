@@ -1,13 +1,21 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import {toast} from 'react-toastify';
 import { addUserToLocalStorage, getUserFromLocalStorage, removeUserFromLocalStorage } from '../../utils/localStorage';
-import { loginUserThunk, registerUserThunk, updateUserThunk } from './userThunk';
+import { createUserThunk, deleteUserThunk, editUserThunk, loginUserThunk, registerUserThunk, updateUserThunk } from './userThunk';
 
 
 const initialState = {
     user: getUserFromLocalStorage(),
+    name:'',
+    nickname:'',
+    email:'',
+    password:'',
+    role:'',
     isLoading: false,
     isSidebarOpen: false,
+    isEditing: false,
+    editUserId: '',
+
 }
 
 
@@ -30,7 +38,32 @@ export const loginUser = createAsyncThunk(
 export const updateUser = createAsyncThunk(
     'user/updateUser',
     async (user, thunkAPI) =>{
-        return updateUserThunk('/auth/updateUser', user, thunkAPI);
+        return updateUserThunk('/user/update', user, thunkAPI);
+    }
+);
+
+
+
+export const createUser = createAsyncThunk(
+    'user/createUser',
+    async (user, thunkAPI) => {
+        return createUserThunk('/user/register', user, thunkAPI);
+    }
+); 
+
+export const editUser = createAsyncThunk(
+    'user/editUser',
+    async ({userId, user},thunkAPI) => {
+        console.log(userId);
+        console.log(user);
+        return editUserThunk('/user/edit/' + userId, user,thunkAPI);
+    }
+);
+
+export const deleteUser = createAsyncThunk(
+    'user/deleteUser',
+    async (userId, thunkAPI) => {
+        return deleteUserThunk('/user/delete/' + userId, thunkAPI);
     }
 );
 const userSlice = createSlice({
@@ -47,7 +80,18 @@ const userSlice = createSlice({
             if(payload){
                 toast.success(payload);
             }
-        }
+        },
+        handleChange: (state, {payload:{name, value}})=>{
+            state[name] = value;
+        },
+        clearValues: ()=>{
+            return {
+                ...initialState
+            };
+        },
+        setEditUser: (state, {payload})=>{
+            return {...state, isEditing: true, ...payload};
+        },
     },
     extraReducers: (builder) =>{
         builder.addCase(registerUser.pending, (state) => {
@@ -90,10 +134,30 @@ const userSlice = createSlice({
         }).addCase(updateUser.rejected, (state, {payload}) =>{
             state.isLoading = false;
             toast.error(payload);
-        });
+        }).addCase(createUser.pending, (state) =>{
+            state.isLoading = true;
+        }).addCase(createUser.fulfilled, (state) =>{
+            state.isLoading = false;
+            toast.success('Job Created');
+        }).addCase(createUser.rejected, (state,{payload}) =>{
+            state.isLoading = false;
+            toast.error(payload);
+        }).addCase(editUser.pending, (state) =>{
+            state.isLoading = true;
+        }).addCase(editUser.fulfilled, (state) =>{
+            state.isLoading = false;
+            toast.success('Job Modified...');
+        }).addCase(editUser.rejected, (state,{payload}) =>{
+            state.isLoading = false;
+            toast.error(payload);
+        }).addCase(deleteUser.fulfilled, (state, {payload}) =>{
+            toast.success(payload);
+        }).addCase(deleteUser.rejected, (state,{payload}) =>{
+            toast.error(payload);
+        });;
     }
 });
 
 
-export const {toggleSidebar, logoutUser} = userSlice.actions;
+export const {toggleSidebar, logoutUser, handleChange, clearValues, setEditUser} = userSlice.actions;
 export default userSlice.reducer;

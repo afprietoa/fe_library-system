@@ -21,7 +21,7 @@ const Profile = () => {
   const onSubmit = (event)=>{
     event.preventDefault();
     const {name, nickname, email, password, role} = userData;
-    if(!name || !nickname || !email || !password || !role){
+    if(!name || !nickname || !email || !password){
       toast.error('Please fill out all fields.');
       return;
     }

@@ -5,3 +5,10 @@ const initialState = {
     isLoading: false,
     issue: null
 }
+
+const issueSlice = createSlice({
+    name: 'issue',
+    initialState,
+});
+
+export default issueSlice.reducer;
