@@ -17,7 +17,7 @@ const initialState = {
     copies:'',
     ItemStatus:'',
     isEditing: false,
-    editJobId: '',
+    editBookId: '',
 }
 
 export const createBook = createAsyncThunk(

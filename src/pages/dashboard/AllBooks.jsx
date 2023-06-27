@@ -134,7 +134,7 @@ const options = {
 
     <ThemeProvider theme={lightTheme}>
       <MUIDataTable 
-        tittle={"employee list"}
+        tittle={"book list"}
         data={bookList}
         columns={columns}
         options={options}

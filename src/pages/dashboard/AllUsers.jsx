@@ -95,7 +95,7 @@ const options = {
 
     <ThemeProvider theme={lightTheme}>
       <MUIDataTable 
-        tittle={"employee list"}
+        tittle={"user list"}
         data={users}
         columns={columns}
         options={options}
