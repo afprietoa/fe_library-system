@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './homePage.scss';
-import AppNavBar from '../../components/AppNavBar';
+import './bookList.scss';
 
-const HomePage = () => {
+const BookList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [fictionBooks, setFictionBooks] = useState([]);
   const [mysteryBooks, setMysteryBooks] = useState([]);
@@ -61,7 +60,7 @@ const HomePage = () => {
 
   return (
     <>
-      <AppNavBar/>
+
     <div className="homePage">
       <h1>Book Search</h1>
       <input
@@ -142,5 +141,5 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default BookList;
 

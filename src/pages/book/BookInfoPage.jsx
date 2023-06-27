@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './bookInfoPage.scss';
-import AppNavBar from '../../components/AppNavBar';
+import { Button, Stack } from '@chakra-ui/react';
+import { getUserFromLocalStorage } from '../../utils/localStorage';
 
 const BookInfoPage = () => {
+  const user = getUserFromLocalStorage();
   const { isbn13 } = useParams();
   const [bookInfo, setBookInfo] = useState(null);
 
@@ -21,9 +23,22 @@ const BookInfoPage = () => {
     fetchBookInfo();
   }, [isbn13]);
 
+  const handleAddToList = async (listId) => {
+    try {
+      const response = await fetch(`http://localhost:8080/list/add/${user.id}/${isbn13}/${listId}`);
+      if (response.ok) {
+        console.log('Book added to list successfully');
+        // Perform any additional actions upon successful addition to the list
+      } else {
+        console.error('Error adding book to list:', response.status);
+      }
+    } catch (error) {
+      console.error('Error adding book to list:', error);
+    }
+  };
+
   return (
     <>
-    <AppNavBar/>
     <div className="bookInfoPage">
       {bookInfo ? (
         <>
@@ -63,6 +78,41 @@ const BookInfoPage = () => {
               <div className="bookDetail">
                 <span className="detailLabel">Item Status:</span> {bookInfo.ItemStatus}
               </div>
+            </div>
+            <div className="buttonsContainer">
+              
+            <Stack direction='row' spacing={4}>
+            <Button
+            size='md'
+            height='48px'
+            width='200px'
+            border='2px'
+            borderColor='green.500' 
+            onClick={() => handleAddToList(0)}
+            >
+              Add to Reading List
+              </Button>
+            <Button
+            size='md'
+            height='48px'
+            width='200px'
+            border='2px'
+            borderColor='blue.500' 
+            onClick={() => handleAddToList(1)}
+            >
+              Add to Read List
+            </Button>
+            <Button
+            size='md'
+            height='48px'
+            width='200px'
+            border='2px'
+            borderColor='pink.500' 
+            onClick={() => handleAddToList(2)}
+            >
+              Add to Plan to Read List
+            </Button>
+            </Stack>
             </div>
           </div>
         </>

@@ -78,20 +78,7 @@ const AppNavBar = () => {
             </Typography>
             </Box>
           </Box>
-          <Stack direction="row" spacing={2}>
-      <Button 
-      color="success"
-      onClick={() => navigate("/home")}
-      >
-        HOME
-      </Button>
-      <Button 
-      color="success"
-      onClick={() => navigate("/landing")}
-      >
-        BOOKS
-      </Button>
-    </Stack>
+         
           <Box 
                 sx={{
                   p: 0,

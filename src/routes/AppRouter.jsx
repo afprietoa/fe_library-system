@@ -6,7 +6,7 @@ import'react-toastify/dist/ReactToastify.css';
 import { Stats, SharedLayout, AllBooks, AllUsers, AllIssues, AddBook, AddIssue,  ProfileForm, AddUser } from '../pages/dashboard';
 import ProtectedRoute from '../pages/dashboard/ProtectedRoute';
 import BookDetail from '../pages/bookDetail/BookDetail';
-import HomePage from '../pages/home/HomePage';
+import BookList from '../pages/bookList/BookList';
 import BookInfoPage from '../pages/book/BookInfoPage';
 import Profile from '../pages/profile/Profile';
 import { useContext } from "react";
@@ -36,10 +36,10 @@ import { DarkModeContext } from '../context/darkModeContext';
                   <Route path='add-issue' element={<AddIssue/>}/>
                   <Route path='add-user' element={<AddUser/>}/>
                   <Route path='profile' element={<ProfileForm/>}/>
-                  <Route path="/profile/:id" element={<Profile />} />
+                  <Route path="profile/:id" element={<Profile />} />
+                  <Route path='book-list' element={<BookList/>}/>
+                  <Route path="book/:isbn13" element={<BookInfoPage />} />
                 </Route>
-                <Route path='home' element={<HomePage/>}/>
-                <Route path="book/:isbn13" element={<BookInfoPage />} />
                 <Route path='landing' element={<Landing/>}/>
                 <Route path='register' element={<Register/>}/>
                 <Route path="book-detail/:isbn13" element={<BookDetail />} />

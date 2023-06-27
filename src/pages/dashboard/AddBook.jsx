@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { clearValues, createUser, editUser, handleChange } from "../../features/user/userSlice";
 import { createBook, editBook } from "../../features/book/bookSlice";
+import { Link } from "react-router-dom";
 
 
 const AddBook = () => {
@@ -185,6 +186,13 @@ const AddBook = () => {
               disabled={isLoading}>
               submit
             </button>
+
+            <Link
+              type="button" 
+              to={`/book-list`}
+              className="btn btn-block clear-btn">
+              More
+            </Link>
           </div>
         </div>
       </form>
